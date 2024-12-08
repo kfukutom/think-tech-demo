@@ -224,7 +224,7 @@ function PureMultimodalInput({
 
       <Textarea
         ref={textareaRef}
-        placeholder="Send a message..."
+        placeholder="Tell us about your business!"
         value={input}
         onChange={handleInput}
         className={cx(
