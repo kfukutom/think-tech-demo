@@ -16,9 +16,9 @@ interface SuggestedActionsProps {
 function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
   const suggestedActions = [
     {
-      title: 'What is the Detroit',
+      title: 'What is the Detroit`s current',
       label: 'startup ecosystem like?',
-      action: 'What is the Detroit startup ecosystem like?',
+      action: 'What is the Detroit`s current startup ecosystem like?',
     },
     {
       title: 'Help me find a mechanic',
@@ -38,8 +38,9 @@ function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
           key={`suggested-action-${suggestedAction.title}-${index}`}
           className={index > 1 ? 'hidden sm:block' : 'block'}
         >
-          <Button
-            variant="ghost"
+          <motion.button
+            whileHover={{ scale: 1.0265, boxShadow: '0px 0px 8px rgba(0,0,0,0.15)' }}
+            transition={{ type: 'keyframes', stiffness: 300 }}
             onClick={async () => {
               window.history.replaceState({}, '', `/chat/${chatId}`);
 
@@ -48,13 +49,13 @@ function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
                 content: suggestedAction.action,
               });
             }}
-            className="text-left border rounded-xl px-4 py-3.5 text-sm flex-1 gap-1 sm:flex-col w-full h-auto justify-start items-start"
+            className="text-left border rounded-xl px-4 py-3.5 text-sm flex flex-col items-start justify-start gap-1 w-full h-auto"
           >
             <span className="font-medium">{suggestedAction.title}</span>
-            <span className="text-muted-foreground">
+            <span className="text-muted-foreground text-xs mt-1">
               {suggestedAction.label}
             </span>
-          </Button>
+          </motion.button>
         </motion.div>
       ))}
     </div>
