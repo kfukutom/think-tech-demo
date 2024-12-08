@@ -16,14 +16,14 @@ interface SuggestedActionsProps {
 function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
   const suggestedActions = [
     {
-      title: 'What is the weather',
-      label: 'in San Francisco?',
-      action: 'What is the weather in San Francisco?',
+      title: 'What is the Detroit',
+      label: 'startup ecosystem like?',
+      action: 'What is the Detroit startup ecosystem like?',
     },
     {
-      title: 'Help me draft an essay',
-      label: 'about Silicon Valley',
-      action: 'Help me draft a short essay about Silicon Valley',
+      title: 'Help me find a mechanic',
+      label: 'around Eastern Market',
+      action: 'Help me find a mechanic around Eastern Market',
     },
   ];
 

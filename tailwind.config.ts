@@ -11,6 +11,7 @@ const config: Config = {
     fontFamily: {
       sans: ['geist'],
       mono: ['geist-mono'],
+      pixel: ['"Press Start 2P"', 'monospace'],
     },
     extend: {
       borderRadius: {
@@ -21,6 +22,7 @@ const config: Config = {
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        customGreen: '#3cb371',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',

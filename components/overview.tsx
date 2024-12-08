@@ -1,9 +1,23 @@
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-
-import { MessageIcon, VercelIcon } from './icons';
+import { useState, useEffect } from 'react';
 
 export const Overview = () => {
+  const [messageIndex, setMessageIndex] = useState(0);
+  const messages = [
+    "Let's navigate the present, and create the future.",
+    "Built in Michigan, Built for the World.",
+    "Follow us on all socials!",
+    "Let's shape the future together."
+  ];
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setMessageIndex((prevIndex) => (prevIndex + 1) % messages.length);
+    }, 5000); 
+
+    return () => clearInterval(intervalId); // Cleanup the interval on component unmount
+  }, []);
+
   return (
     <motion.div
       key="overview"
@@ -14,38 +28,25 @@ export const Overview = () => {
       transition={{ delay: 0.5 }}
     >
       <div className="rounded-xl p-6 flex flex-col gap-8 leading-relaxed text-center max-w-xl">
-        <p className="flex flex-row justify-center gap-4 items-center">
-          <VercelIcon size={32} />
-          <span>+</span>
-          <MessageIcon size={32} />
+        <h1 className="font-pixel text-3xl">
+          [Think]
+        </h1>
+        <p>
+          Welcome, and thank you for choosing to use Think!
         </p>
         <p>
-          This is an{' '}
-          <Link
-            className="font-medium underline underline-offset-4"
-            href="https://github.com/vercel/ai-chatbot"
-            target="_blank"
-          >
-            open source
-          </Link>{' '}
-          chatbot template built with Next.js and the AI SDK by Vercel. It uses
-          the{' '}
-          <code className="rounded-md bg-muted px-1 py-0.5">streamText</code>{' '}
-          function in the server and the{' '}
-          <code className="rounded-md bg-muted px-1 py-0.5">useChat</code> hook
-          on the client to create a seamless chat experience.
+          At Think Technologies, we leverage the power of artificial intelligence to provide tailored data solutions that revolutionize the way businesses operate and creatives innovate.
         </p>
-        <p>
-          You can learn more about the AI SDK by visiting the{' '}
-          <Link
-            className="font-medium underline underline-offset-4"
-            href="https://sdk.vercel.ai/docs"
-            target="_blank"
-          >
-            docs
-          </Link>
-          .
-        </p>
+        <motion.p 
+          key={messageIndex} // Key change triggers animation
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-customGreen"
+        >
+          {messages[messageIndex]}
+        </motion.p>
       </div>
     </motion.div>
   );
